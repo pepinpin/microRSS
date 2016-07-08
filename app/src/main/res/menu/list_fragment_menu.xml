@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto"
+	>
+
+	<group
+		android:id="@+id/filter"
+		android:checkableBehavior="single"
+		>
+		<item
+			android:id="@+id/todayButton"
+			android:title="@string/today"
+			app:showAsAction="never"
+			/>
+		<item
+			android:id="@+id/yesterdayButton"
+			android:title="@string/yesterday"
+			app:showAsAction="never"
+			/>
+		<item
+			android:id="@+id/allButton"
+			android:title="@string/all"
+			app:showAsAction="never"
+			/>
+	</group>
+
+	<item
+		android:id="@+id/settingsButton"
+		android:title="@string/settings"
+		android:icon="@android:drawable/stat_notify_sync"
+		app:showAsAction="never"
+		/>
+
+</menu>

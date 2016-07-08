@@ -1,0 +1,7 @@
+.gradle/
+.idea/
+build/
+uRSS.iml
+local.properties
+app/build/
+app/app.iml

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="today">Hoy</string>
+	<string name="yesterday">Ayer</string>
+	<string name="refresh">Refrescar</string>
+	<string name="settings">Parámetros</string>
+	<string name="viewInBrowserButton">Ver en el navegador</string>
+	<string name="shareButton">Compartir este Articulo</string>
+	<string name="all">Todos</string>
+	<string name="shareText">"Mira esto : "</string>
+	<string name="no">No</string>
+	<string name="yes">Sì</string>
+	<string name="delete_all_feeds_title">Borrar las suscripciones</string>
+	<string name="delete_all_feeds_message">Borrar la lista de TODAS las suscripciones ??</string>
+	<string name="delete_all_feeds_toast_cleared">La lista des suscripciones esta vacia !</string>
+	<string name="optional">Nombre (Opcional)</string>
+	<string name="mandatory">URL (Obligatoria)</string>
+	<string name="add_feed_title">Añadir una suscripcion RSS</string>
+	<string name="add_feed_message">Entrar un URL y un nombre</string>
+	<string name="Cancel">Cancelar</string>
+	<string name="valid_url_toast">Necesitas indiquar un URL valido !</string>
+	<string name="edit_feed_title">Editar la suscripcion</string>
+	<string name="edit_feed_message">Que quieres cambiar ?</string>
+	<string name="delete_feed_message">Borrar</string>
+	<string name="NoNews_part1">No hay noticias</string>
+	<string name="feeds">Suscripciones</string>
+	<string name="browser">Navegador</string>
+	<string name="delete_all_feeds">Borrar todas las suscripciones</string>
+	<string name="NoNews_part2">del</string>
+	<string name="activate_JS_warning">Esto puede ralentizar el tiempo de carga de las páginas</string>
+	<string name="activate_JS_">Activar JavaScript</string>
+	<string name="empty_list_toast_1">Su lista de suscripciones esta vacia.</string>
+	<string name="empty_list_toast_2">" fueron añadidas por defecto."</string>
+	<string name="NoNews_part3">Check the filter and your internet connection</string>
+	<string name="OK">Listo</string>
+</resources>

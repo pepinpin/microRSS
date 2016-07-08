@@ -1,0 +1,40 @@
+<resources>
+	<string name="app_name" translatable="false">µRSS</string>
+
+	<!--Date & Time-->
+	<string name="yesterday">Yesterday</string>
+	<string name="today">Today</string>
+	<string name="refresh">Refresh</string>
+	<string name="settings">Settings</string>
+	<string name="viewInBrowserButton">View in Browser</string>
+	<string name="shareButton">Share this Article</string>
+	<string name="all">All</string>
+	<string name="shareText">"Check this out : "</string>
+	<string name="no">No</string>
+	<string name="yes">Yes</string>
+	<string name="delete_all_feeds_title">Clear all feeds</string>
+	<string name="delete_all_feeds_message">Are you sure you want to delete ALL the feeds ??</string>
+	<string name="delete_all_feeds_toast_cleared">The Feeds list has been cleared !</string>
+	<string name="optional">Name (Optional)</string>
+	<string name="mandatory">URL (Mandatory)</string>
+	<string name="add_feed_title">Add a feed</string>
+	<string name="add_feed_message">Enter an URL and a Name</string>
+	<string name="OK">OK</string>
+	<string name="Cancel">Cancel</string>
+	<string name="valid_url_toast">You MUST provide a valid URL !</string>
+	<string name="edit_feed_title">Edit Feed</string>
+	<string name="edit_feed_message">What do you want to change ?</string>
+	<string name="delete_feed_message">Delete</string>
+	<string name="NoNews_part1">No news</string>
+	<string name="NoNews_part2">for</string>
+	<string name="feeds">Feeds</string>
+	<string name="browser">Browser</string>
+	<string name="delete_all_feeds">Delete ALL feeds</string>
+	<string name="activate_JS_warning">This may slow down pages loading time</string>
+	<string name="activate_JS_">Activate JavaScript</string>
+	<string name="activated" translatable="false">On</string>
+	<string name="deactivated" translatable="false">Off</string>
+	<string name="empty_list_toast_1">Your feed list is empty.</string>
+	<string name="empty_list_toast_2">" have been added by default."</string>
+	<string name="NoNews_part3">Check the filter and your internet connection</string>
+</resources>

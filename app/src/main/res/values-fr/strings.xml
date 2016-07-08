@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="today">Aujourd\'hui</string>
+	<string name="yesterday">Hier</string>
+	<string name="refresh">Rafraichir</string>
+	<string name="settings">Paramètres</string>
+	<string name="viewInBrowserButton">Voir dans le navigateur</string>
+	<string name="shareButton">Partager cet Article</string>
+	<string name="all">Tous</string>
+	<string name="shareText">"Regarde ça : "</string>
+	<string name="no">Non</string>
+	<string name="yes">Oui</string>
+	<string name="delete_all_feeds_title">Effacer les flux RSS</string>
+	<string name="delete_all_feeds_message">Effacer la liste de TOUS les flux RSS ?</string>
+	<string name="delete_all_feeds_toast_cleared">La liste des flux RSS est vide !</string>
+	<string name="optional">Nom (Optionnel)</string>
+	<string name="mandatory">URL (Obligatoire)</string>
+	<string name="add_feed_title">Ajouter un flux RSS</string>
+	<string name="add_feed_message">Indiquez un nom et une URL</string>
+	<string name="Cancel">Annuler</string>
+	<string name="valid_url_toast">Vous devez indiquer une URL valide !</string>
+	<string name="edit_feed_title">Editer le Flux RSS</string>
+	<string name="edit_feed_message">Que voulez vous changer ?</string>
+	<string name="delete_feed_message">Effacer</string>
+	<string name="NoNews_part1">Pas de news</string>
+	<string name="NoNews_part2">pour</string>
+	<string name="feeds">Flux</string>
+	<string name="browser">Navigateur</string>
+	<string name="delete_all_feeds">Effacer TOUS les flux</string>
+	<string name="activate_JS_warning">Cela peut ralentir le chargement des pages web</string>
+	<string name="activate_JS_">Activer JavaScript</string>
+	<string name="empty_list_toast_1">Votre liste de flux est vide.</string>
+	<string name="empty_list_toast_2">" ont été ajouté par défaut."</string>
+	<string name="NoNews_part3">Verifdier votre connection internet ainsi que le filtre</string>
+	<string name="OK">OK</string>
+</resources>
