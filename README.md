@@ -11,6 +11,7 @@ Available soon, for free, on Google Play market.
 - Share articles via sms/email/snapchat/viber (any apps that support "text/plain" MIME type intent)
 - View articles in browser
 - Activate / deactivate Javascript in webview
+- No ads
 
 ### Supported languages :
 - French
