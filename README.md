@@ -20,7 +20,7 @@ Available soon, for free, on Google Play market.
 
 ### Know issues :
 - Graphical bug on Android KitKat (4.4) => menus aren't displayed properly but still usable
-- Feeds must respect the RFC-822 date-time format for the pubDate
+- Feeds must respect the RFC-822 date-time format for the pubDate (ex : Fri, 08 Jul 2016 15:00:15 +0200)
 
 ### Todo :
 - Optimisation to minimize battery usage while in background
