@@ -1,4 +1,4 @@
-# microRSS
+# microRSS (µRSS)
 simple, light weight &amp; multilingual RSS reader for Android powered devices (phones and tablets).
 
 Available soon, for free, on Google Play market.
