@@ -7,7 +7,7 @@ Available soon, for free, on Google Play market.
 - Filter articles by date (Today, Yesterday and All)
 - Add as many feeds as you want
 - Edit feeds (name and URL)
-- Autofill the feed list if none present
+- Autofill the feed list, based on the device's language, if none present
 - Share articles via sms/email/snapchat/viber (any apps that support "text/plain" MIME type intent)
 - View articles in browser
 - Activate / deactivate Javascript in webview
