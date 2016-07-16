@@ -4,10 +4,5 @@
 .gradle
 app/build/
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
 /build
 /captures
-build/
-app/build/
-local.properties
