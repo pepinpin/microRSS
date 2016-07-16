@@ -1,3 +1,5 @@
+![GitHub Logo](/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
+
 # microRSS (µRSS)
 simple, light weight &amp; multilingual RSS reader for Android powered devices (phones and tablets).
 
