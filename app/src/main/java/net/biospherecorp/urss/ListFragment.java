@@ -65,6 +65,7 @@ public class ListFragment extends Fragment{
 
 		if (recyclerView != null) {
 
+		// set the Recycler view
 			// instantiation of the adapter needed by the recyclerView
 			_adapter = new ListAdapter((ListAdapter.ArticleLoader) getActivity());
 
@@ -73,18 +74,42 @@ public class ListFragment extends Fragment{
 
 			// sets the recyclerView adapter
 			recyclerView.setAdapter(_adapter);
-		}
 
-		FloatingActionButton backTop = (FloatingActionButton) view.findViewById(R.id.backToTopButton);
-		backTop.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (recyclerView != null){
+
+		// set the OnClickListener on the button
+			//
+			// on click on the "back to the top" button
+			final FloatingActionButton backTop = (FloatingActionButton) view.findViewById(R.id.backToTopButton);
+			backTop.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// move to the top of the recycler view (latest article)
 					recyclerView.scrollToPosition(0);
 				}
-			}
-		});
+			});
 
+		// set the onScrollListener on the recyclerView
+			//
+			// on scroll
+			recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+				@Override
+				public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+					super.onScrolled(recyclerView, dx, dy);
+
+					int posInRecyclerView = recyclerView.getChildLayoutPosition(recyclerView.findChildViewUnder(dx,dy));
+					L.m("position in recyclerView = " + posInRecyclerView);
+
+					// if position > 0 (not the 1st "page")
+					if (posInRecyclerView > 0){
+						// show the "back to the top" button
+						backTop.setVisibility(View.VISIBLE);
+					}else{
+						// hide the "back to the top" button
+						backTop.setVisibility(View.GONE);
+					}
+				}
+			});
+		}
 	}
 
 	@Override
