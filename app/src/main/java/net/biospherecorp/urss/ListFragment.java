@@ -20,12 +20,18 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static android.app.Activity.RESULT_OK;
+
 
 public class ListFragment extends Fragment{
 
 	static ArrayList<DownloadArticlesTask> _listTasks = new ArrayList<>();
 	private ListAdapter _adapter;
 	private SwipeRefreshLayout _swipeRefresh;
+
+	// used by the startActivityForResult
+	// and onActivityResult methods
+	private static final int RETURN_FROM_SETTINGS = 1;
 
 	// The filter, can have 3 values :
 	// - "" means All
@@ -80,6 +86,7 @@ public class ListFragment extends Fragment{
 			//
 			// on click on the "back to the top" button
 			final FloatingActionButton backTop = (FloatingActionButton) view.findViewById(R.id.backToTopButton);
+
 			backTop.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -99,7 +106,7 @@ public class ListFragment extends Fragment{
 					int posInRecyclerView = recyclerView.getChildLayoutPosition(recyclerView.findChildViewUnder(dx,dy));
 					L.m("position in recyclerView = " + posInRecyclerView);
 
-					// if position > 0 (not the 1st "page")
+					// if position > 0 (1st article isn't visible anymore)
 					if (posInRecyclerView > 0){
 						// show the "back to the top" button
 						backTop.setVisibility(View.VISIBLE);
@@ -110,17 +117,11 @@ public class ListFragment extends Fragment{
 				}
 			});
 		}
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
 		_refreshData();
-		L.m(getActivity(), ">> OnResume()");
 	}
 
 	// Refreshes ALL the app's data ...
-	// Articles AND feeds
+	// Articles AND Feeds
 	private void _refreshData(){
 
 		if(!_swipeRefresh.isRefreshing()){
@@ -195,8 +196,8 @@ public class ListFragment extends Fragment{
 
 		// if no more task in _tasksList
 		if (_listTasks.isEmpty()){
+
 			// hide the progressBar
-			//getActivity().findViewById(R.id.listFragmentProgressBar).setVisibility(View.GONE);
 			_swipeRefresh.setRefreshing(false);
 
 			// if no articles in the adapter's List
@@ -267,9 +268,22 @@ public class ListFragment extends Fragment{
 				return true;
 			case R.id.settingsButton:
 				Intent intent = new Intent(getActivity(), SettingsActivity.class);
-				startActivity(intent);
+				startActivityForResult(intent, RETURN_FROM_SETTINGS);
 				return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+
+	// refresh the data when coming back from the Settings activity
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		//super.onActivityResult(requestCode, resultCode, data);
+
+		if (requestCode == RETURN_FROM_SETTINGS){
+			if (resultCode == RESULT_OK){
+				_refreshData();
+			}
+		}
 	}
 }

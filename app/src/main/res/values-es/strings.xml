@@ -31,6 +31,6 @@
 	<string name="activate_JS_">Activar JavaScript</string>
 	<string name="empty_list_toast_1">Su lista de suscripciones esta vacia.</string>
 	<string name="empty_list_toast_2">" fueron añadidas por defecto."</string>
-	<string name="NoNews_part3">Check the filter and your internet connection</string>
+	<string name="NoNews_part3">Verifique su conexion a internet y seleccione el filtro \"Todos\"</string>
 	<string name="OK">Listo</string>
 </resources>

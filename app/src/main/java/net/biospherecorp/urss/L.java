@@ -4,14 +4,10 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-/**
- * Created by Pe on 05/06/2016.
- */
-
 
 public abstract class L extends Context{
 
-	private static boolean IS_ACTIVATED = true;     // change this to active / deactivate this tool
+	private static boolean IS_ACTIVATED = false;     // change this to active / deactivate this tool
 
 	static void m(String message){
 		if (IS_ACTIVATED) {

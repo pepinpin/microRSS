@@ -44,29 +44,30 @@ public class SettingsActivity extends AppCompatActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
-		int id = item.getItemId();
-
-		switch (id){
-			case android.R.id.home :
-				returnToMain();
+		if (item.getItemId() == android.R.id.home){
+			returnToMain();
 		}
-		return super.onOptionsItemSelected(item);
+
+		// return true if event is consumed here
+		return true;
 	}
+
 
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
-
 		returnToMain();
 	}
 
 	private void returnToMain(){
 
+		// set the result code for the onActivityResult method
+		setResult(RESULT_OK);
+
+		//terminate this activity
 		this.finish();
 
 		// checks to see if JS has been enabled in the settings
 		// we do it here, so it's only checked when we leave the settings
 		MainActivity.IS_JAVASCRIPT_ENABLED = isJavascriptEnabled(getApplicationContext());
-
 	}
 }
