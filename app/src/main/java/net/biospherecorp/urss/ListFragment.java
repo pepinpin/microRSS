@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -48,7 +49,7 @@ public class ListFragment extends Fragment{
 	}
 
 	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
+	public void onViewCreated(final View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		L.m(getActivity(), ">> onViewCreated()");
 
@@ -60,7 +61,7 @@ public class ListFragment extends Fragment{
 			}
 		});
 
-		RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.listFragmentRecyclerView);
+		final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.listFragmentRecyclerView);
 
 		if (recyclerView != null) {
 
@@ -73,6 +74,17 @@ public class ListFragment extends Fragment{
 			// sets the recyclerView adapter
 			recyclerView.setAdapter(_adapter);
 		}
+
+		FloatingActionButton backTop = (FloatingActionButton) view.findViewById(R.id.backToTopButton);
+		backTop.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (recyclerView != null){
+					recyclerView.scrollToPosition(0);
+				}
+			}
+		});
+
 	}
 
 	@Override
