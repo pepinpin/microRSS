@@ -67,15 +67,26 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.Artic
 				// set the title
 				setTitle(title);
 
-				// Create a webViewFragment object
-				WebViewFrag _wvFrag = WebViewFrag.create(article.getUrl(), article.getTitle());
+				// check to see if a webview fragment already exists
+				WebViewFrag wv = (WebViewFrag) getFragmentManager().findFragmentByTag("webview");
 
-				// load this fragment in the mainScreen view
-				getFragmentManager()
-						.beginTransaction()
-						.replace(R.id.mainScreen, _wvFrag)
-						.addToBackStack(null)
-						.commit();
+				// if it doesn't exist
+				if (wv == null){
+
+					// Create a webViewFragment object
+					wv = WebViewFrag.create(article.getUrl(), article.getTitle());
+
+					// load this fragment in the mainScreen view
+					getFragmentManager()
+							.beginTransaction()
+							.replace(R.id.mainScreen, wv, "webview")
+							.addToBackStack(null)
+							.commit();
+				// if it does exist
+				}else{
+					// just load the url without recreating the webview
+					wv.loadPage(url);
+				}
 
 			// if it's a phone
 			}else{

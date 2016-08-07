@@ -19,6 +19,7 @@ import android.webkit.WebViewClient;
 public class WebViewFrag extends Fragment {
 
 	private static String _url, _title;
+	private WebView webView;
 
 	// A fragment can only have a constructor with NO arguments
 	// So we use a static factory method to go around this
@@ -38,7 +39,7 @@ public class WebViewFrag extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		// instantiate the webview
-		WebView webView = new WebView(getActivity());
+		webView = new WebView(getActivity());
 
 		// by default, disables javascript for faster loading and better security
 		webView.getSettings().setJavaScriptEnabled(MainActivity.IS_JAVASCRIPT_ENABLED);
@@ -67,12 +68,17 @@ public class WebViewFrag extends Fragment {
 		}
 
 		// Loads the url in the webview
-		webView.loadUrl(_url);
+		//webView.loadUrl(_url);
+		loadPage(_url);
 
 		L.m("is JS Enabled : " + MainActivity.IS_JAVASCRIPT_ENABLED);
 
 		// return the webview
 		return webView;
+	}
+
+	void loadPage(String url){
+		webView.loadUrl(url);
 	}
 
 
