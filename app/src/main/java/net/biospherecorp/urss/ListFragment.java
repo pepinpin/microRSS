@@ -34,7 +34,7 @@ public class ListFragment extends Fragment{
 	private static final int RETURN_FROM_SETTINGS = 1;
 
 	// The filter, can have 3 values :
-	// - "" means All
+	// - "" (means All)
 	// - Today
 	// - Yesterday
 	static String _filter ="";
@@ -185,12 +185,12 @@ public class ListFragment extends Fragment{
 			_adapter.addArrayList(articles);
 
 		// if the object return by the AsyncTask is null,
-		// display a Toast to the user to tell him that there
+		// display a Toast to the user saying that there
 		// is no news for the a feed or the selected filter
 		}else{
 			Toast.makeText(getActivity(), getString(R.string.NoNews_part1) + " "+
 					(_filter.equals("") ? "" : _filter + " " ) +
-					getString(R.string.NoNews_part2) + " " + siteName, Toast.LENGTH_LONG)
+					getString(R.string.NoNews_part2) + " " + siteName, Toast.LENGTH_SHORT)
 					.show();
 		}
 
@@ -207,9 +207,9 @@ public class ListFragment extends Fragment{
 				Article emptyArticle = new Article.Builder(getActivity())
 						.setDate(_filter)
 						.setTitle(getString(R.string.NoNews_part1))
+						.setUrl("file:///android_asset/error.html")
 						.setDescription(getString(R.string.NoNews_part3))
 						.build();
-						// todo : add a link to a local html page showing a nice message when there is no news / no internet
 
 				// add this article to the adapter
 				_adapter.addArticle(emptyArticle);
@@ -248,7 +248,7 @@ public class ListFragment extends Fragment{
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		super.onOptionsItemSelected(item);
+		//super.onOptionsItemSelected(item);
 
 		switch (item.getItemId()){
 			case R.id.todayButton:
@@ -271,7 +271,7 @@ public class ListFragment extends Fragment{
 				startActivityForResult(intent, RETURN_FROM_SETTINGS);
 				return true;
 		}
-		return super.onOptionsItemSelected(item);
+		return false;
 	}
 
 

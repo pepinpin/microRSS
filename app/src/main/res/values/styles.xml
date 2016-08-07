@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<!--TODO: Find why menus/dialog look bad on kitkat !!-->
-
 	<!-- Base application theme. -->
 	<style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
 		<!-- Customize your theme here. -->
@@ -18,6 +16,7 @@
 
 	<style name="MyTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
 		<item name="android:textColor">@color/colorAccent</item>
+		<item name="android:textSize">@dimen/app_name_size</item>
 	</style>
 
 </resources>

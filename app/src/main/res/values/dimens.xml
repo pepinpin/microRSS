@@ -2,4 +2,5 @@
 <resources>
 	<dimen name="floating_button_vertical_margin">20dp</dimen>
 	<dimen name="floating_button_horizontal_margin">20dp</dimen>
+	<dimen name="app_name_size">19sp</dimen>
 </resources>

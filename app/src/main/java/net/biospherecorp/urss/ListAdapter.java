@@ -45,19 +45,28 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder>{
 		Collections.sort(_list);
 		notifyDataSetChanged();
 
-		// autoload latest article
-		if(MainActivity.IS_WIDESCREEN // if it's a tablet
-				&& !_list.isEmpty() // and the _list of article isn't empty
-				&& ListFragment._listTasks.isEmpty()){ // and there is no more Asynctask running (to really get the latest article)
-
-			// load latest article in webview
-			_loader.load(getLatestArticle());
-		}
+		autoLoadArticle(getLatestArticle());
 	}
 
+	// called only if there is no articles retrieved
+	// from the net (no connection or no news with selected filter)
 	void addArticle(Article article){
 		_list.add(article);
 		notifyDataSetChanged();
+
+		autoLoadArticle(article);
+	}
+
+	private void autoLoadArticle(Article articleToLoad){
+
+		// autoload latest article
+		if(MainActivity.IS_WIDESCREEN // if it's a tablet
+				&& ListFragment._listTasks.isEmpty()){ // and there is no more Asynctask running (to really get the latest article)
+
+			// load the article in webview
+			_loader.load(articleToLoad);
+		}
+
 	}
 
 	void clearList(){
@@ -84,7 +93,7 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder>{
 	}
 
 	// Retrieves the latest Article from the list
-	public Article getLatestArticle(){
+	private Article getLatestArticle(){
 		return _list.get(0);
 	}
 

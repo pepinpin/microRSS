@@ -61,7 +61,7 @@ public class WebViewFrag extends Fragment {
 		webView.setWebViewClient(new WebViewClient());
 
 		if(MainActivity.IS_JAVASCRIPT_ENABLED){
-			// no need for javascript alerts, favicon ...
+			// no need for javascript alerts, favicon
 			// so no need for the WebChromeClient
 			webView.setWebChromeClient(new WebChromeClient());
 		}
@@ -81,7 +81,6 @@ public class WebViewFrag extends Fragment {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
-
 		// Inflate the menu layout
 		inflater.inflate(R.menu.webview_fragment_menu, menu);
 
@@ -89,44 +88,49 @@ public class WebViewFrag extends Fragment {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		super.onOptionsItemSelected(item);
+		//super.onOptionsItemSelected(item);
 
-		Intent intent;
+		// enable the "Share" and "View in Browser" events
+		// if the url doesn't start with "file:///"
+		if (!_url.startsWith("file:///")){
 
-		switch(item.getItemId()){
+			Intent intent;
 
-			// "Share" button
-			case R.id.shareButton:
+			switch(item.getItemId()){
 
-				// Instantiate an implicit intent
-				intent = new Intent(Intent.ACTION_SEND);
+				// "Share" button
+				case R.id.shareButton:
 
-				// sets the MIME type
-				intent.setType("text/plain");
+					// Instantiate an implicit intent
+					intent = new Intent(Intent.ACTION_SEND);
 
-				// add the "Check this out" localized string to the url
-				intent.putExtra(Intent.EXTRA_TEXT,
-						getResources().getString(R.string.shareText) +
-								"\n" + _title +
-								"\n \n" + _url);
+					// sets the MIME type
+					intent.setType("text/plain");
 
-				// displays an app chooser to share the link with
-				// (any app that can handle text/plain, like sms, email... )
-				startActivity(Intent.createChooser(intent, getResources().getString(R.string.shareButton)));
-				return true;
+					// add the "Check this out" localized string to the url
+					intent.putExtra(Intent.EXTRA_TEXT,
+							getResources().getString(R.string.shareText) +
+									"\n" + _title +
+									"\n \n" + _url);
 
-			// "view in the Browser" button
-			case R.id.viewInBrowserButton:
+					// displays an app chooser to share the link with
+					// (any app that can handle text/plain, like sms, email... )
+					startActivity(Intent.createChooser(intent, getResources().getString(R.string.shareButton)));
+					return true;
 
-				// Instantiate an implicit intent
-				// that's gonna open up the browser
-				intent = new Intent(Intent.ACTION_VIEW, Uri.parse(_url));
+				// "view in the Browser" button
+				case R.id.viewInBrowserButton:
 
-				// start the Activity "open browser with URL"
-				startActivity(intent);
-				return true;
+					// Instantiate an implicit intent
+					// that's gonna open up the browser
+					intent = new Intent(Intent.ACTION_VIEW, Uri.parse(_url));
+
+					// start the Activity "open browser with URL"
+					startActivity(intent);
+					return true;
+			}
 		}
 
-		return super.onOptionsItemSelected(item);
+		return false;
 	}
 }

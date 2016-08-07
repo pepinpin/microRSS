@@ -19,7 +19,7 @@ import javax.xml.parsers.ParserConfigurationException;
 //
 // It is called every time the list of article is refreshed
 // or when a filter is applied (Today, Yesterday, All)
-public class DownloadArticlesTask extends AsyncTask<OneFeed, Void, ArrayList<Article>> {
+class DownloadArticlesTask extends AsyncTask<OneFeed, Void, ArrayList<Article>> {
 
 	private ArrayList<Article> _list;
 	private ListFragment _listFrag;
@@ -27,7 +27,7 @@ public class DownloadArticlesTask extends AsyncTask<OneFeed, Void, ArrayList<Art
 
 	// Constructor that takes a fragment containing a recyclerView
 	// will be used in the onPostExecute() method
-	public DownloadArticlesTask(ListFragment listFrag) {
+	DownloadArticlesTask(ListFragment listFrag) {
 		this._listFrag = listFrag;
 	}
 
@@ -99,72 +99,14 @@ public class DownloadArticlesTask extends AsyncTask<OneFeed, Void, ArrayList<Art
 
 					// Get the date
 					date = getElementsText(node, "pubDate");
-					// Get the title
-					title = getElementsText(node, "title");
-					// Get the description
-					description = getElementsText(node, "description");
 
+					// Get the title and clean it
+					title = cleanupTextFromHtml(
+							getElementsText(node, "title"));
 
-				// Cleaning up the description text
-
-					// check to see if there is a <img> tag in the node
-					if (node.getElementsByTagName("img") != null){
-
-						// if there is one in the description, replace it with empty string
-						description = description.replaceAll("<img .*?></img>","");
-						description = description.replaceAll("<img .*?>","");
-					}
-
-					// check to see if there is a <strong> tag in the node
-					if (node.getElementsByTagName("strong") != null){
-
-						// if there is one in the description, replace it with empty string
-						description = description.replaceAll("<strong.*?>","");
-						description = description.replaceAll("</strong>","");
-					}
-
-					// check to see if there is a <p> tag in the node
-					if (node.getElementsByTagName("p") != null){
-
-						// if there is one in the description, replace it with empty string
-						description = description.replaceAll("<p.*?>","");
-						description = description.replaceAll("</p>","");
-					}
-
-					// check to see if there is a <a> tag in the node
-					if (node.getElementsByTagName("a") != null){
-
-						// if there is one in the description, replace it with empty string
-						description = description.replaceAll("<a.*?>","");
-						description = description.replaceAll("</a>","");
-					}
-
-					// check to see if there is a <ul> tag in the node
-					if (node.getElementsByTagName("ul") != null){
-
-						// if there is one in the description, replace it with empty string
-						description = description.replaceAll("<ul.*?>","");
-						description = description.replaceAll("</ul>","");
-					}
-
-					// check to see if there is a <li> tag in the node
-					if (node.getElementsByTagName("li") != null){
-
-						// if there is one in the description, replace it with empty string
-						description = description.replaceAll("<li.*?>","");
-						description = description.replaceAll("</li>","");
-					}
-
-					// check to see if there is a <br> tag in the node
-					if (node.getElementsByTagName("br") != null){
-
-						// if there is one in the description, replace it with empty string
-						description = description.replaceAll("<br>","");
-					}
-
-				// end of cleaning up
-
-
+					// Get the description and clean it
+					description = cleanupTextFromHtml(
+							getElementsText(node, "description"));
 
 					// Get the link(url) to the Article
 					url = getElementsText(node, "link");
@@ -201,6 +143,60 @@ public class DownloadArticlesTask extends AsyncTask<OneFeed, Void, ArrayList<Art
 	// that belongs to the tag "tagName"
 	private String getElementsText(Element el, String tagName) {
 		return el.getElementsByTagName(tagName).item(0).getTextContent();
+	}
+
+
+	// Clean up a text from html entities and tags
+	private String cleanupTextFromHtml(String txt){
+
+		// Cleaning up the description text by entities
+		//
+		txt = txt.replaceAll("&quot;", "\"");
+		txt = txt.replaceAll("&nbsp;", " ");
+		txt = txt.replaceAll("&lt;", "<");
+		txt = txt.replaceAll("&gt;", ">");
+		txt = txt.replaceAll("&amp;", "&");
+		txt = txt.replaceAll("&cent;", "¢");
+		txt = txt.replaceAll("&pound;", "£");
+		txt = txt.replaceAll("&yen;", "¥");
+		txt = txt.replaceAll("&euro;", "€");
+		txt = txt.replaceAll("&copy;", "©");
+		txt = txt.replaceAll("&reg;", "®");
+
+		txt = txt.replaceAll("&atilde;", "ã");
+		txt = txt.replaceAll("&ntilde;", "ñ");
+		txt = txt.replaceAll("&agrave;", "à");
+		txt = txt.replaceAll("&aacute;", "á");
+		txt = txt.replaceAll("&acirc;", "â");
+		txt = txt.replaceAll("&ccedil;", "ç");
+		txt = txt.replaceAll("&ugrave;", "ù");
+		txt = txt.replaceAll("&aelig;", "æ");
+
+
+		// Cleaning up the description text by tag
+		//
+		txt = txt.replaceAll("<img .*?></img>","");
+		txt = txt.replaceAll("<img .*?>","");
+
+		txt = txt.replaceAll("<strong.*?>","");
+		txt = txt.replaceAll("</strong>","");
+
+		txt = txt.replaceAll("<p.*?>","");
+		txt = txt.replaceAll("</p>","");
+
+		txt = txt.replaceAll("<a.*?>","");
+		txt = txt.replaceAll("</a>","");
+
+		txt = txt.replaceAll("<ul.*?>","");
+		txt = txt.replaceAll("</ul>","");
+
+		txt = txt.replaceAll("<li.*?>","");
+		txt = txt.replaceAll("</li>","");
+
+		txt = txt.replaceAll("<br>","");
+		txt = txt.replaceAll("<br.*?>","");
+
+		return txt;
 	}
 
 	// When done with this, update the recyclerView

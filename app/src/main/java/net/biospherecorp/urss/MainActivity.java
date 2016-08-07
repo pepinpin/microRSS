@@ -61,10 +61,11 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.Artic
 			String title = article.getTitle();
 			String url = article.getUrl();
 
-			setTitle(title);
-
-			// If it's a tablet (wide screen)
+			// If it's a tablet or TV (wide screen)
 			if(IS_WIDESCREEN){
+
+				// set the title
+				setTitle(title);
 
 				// Create a webViewFragment object
 				WebViewFrag _wvFrag = WebViewFrag.create(article.getUrl(), article.getTitle());
