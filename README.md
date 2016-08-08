@@ -3,7 +3,7 @@
 # microRSS (µRSS)
 simple, lightweight &amp; multilingual RSS reader for Android powered devices (phones, tablets, TV).
 
-Available soon, for free, on Google Play market.
+Available for free on Google Play market : [µRSS](https://play.google.com/store/apps/details?id=net.biospherecorp.urss)
 
 ### Features :
 - Filter articles by date (Today, Yesterday and All)
