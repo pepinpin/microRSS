@@ -155,6 +155,7 @@ class DownloadArticlesTask extends AsyncTask<OneFeed, Void, ArrayList<Article>> 
 		txt = txt.replaceAll("&nbsp;", " ");
 		txt = txt.replaceAll("&lt;", "<");
 		txt = txt.replaceAll("&gt;", ">");
+
 		txt = txt.replaceAll("&amp;", "&");
 		txt = txt.replaceAll("&cent;", "¢");
 		txt = txt.replaceAll("&pound;", "£");
@@ -164,11 +165,16 @@ class DownloadArticlesTask extends AsyncTask<OneFeed, Void, ArrayList<Article>> 
 		txt = txt.replaceAll("&reg;", "®");
 
 		txt = txt.replaceAll("&atilde;", "ã");
-		txt = txt.replaceAll("&ntilde;", "ñ");
 		txt = txt.replaceAll("&agrave;", "à");
 		txt = txt.replaceAll("&aacute;", "á");
 		txt = txt.replaceAll("&acirc;", "â");
+
+		txt = txt.replaceAll("&egrave;", "è");
+		txt = txt.replaceAll("&eacute;", "é");
+		txt = txt.replaceAll("&ecirc;", "ê");
+
 		txt = txt.replaceAll("&ccedil;", "ç");
+		txt = txt.replaceAll("&ntilde;", "ñ");
 		txt = txt.replaceAll("&ugrave;", "ù");
 		txt = txt.replaceAll("&aelig;", "æ");
 
@@ -180,6 +186,9 @@ class DownloadArticlesTask extends AsyncTask<OneFeed, Void, ArrayList<Article>> 
 
 		txt = txt.replaceAll("<strong.*?>","");
 		txt = txt.replaceAll("</strong>","");
+
+		txt = txt.replaceAll("<span.*?>","");
+		txt = txt.replaceAll("</span>","");
 
 		txt = txt.replaceAll("<p.*?>","");
 		txt = txt.replaceAll("</p>","");

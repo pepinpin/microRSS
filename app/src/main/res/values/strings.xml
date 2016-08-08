@@ -34,7 +34,7 @@
 	<string name="activate_JS_">Activate JavaScript</string>
 	<string name="activated" translatable="false">On</string>
 	<string name="deactivated" translatable="false">Off</string>
-	<string name="empty_list_toast_1">Your feed list is empty.</string>
-	<string name="empty_list_toast_2">" have been added by default."</string>
+	<string name="empty_list_toast_1">Your feed list is empty</string>
+	<string name="empty_list_toast_2">\" have been added by default\"</string>
 	<string name="NoNews_part3">Check your internet connection and reset the filter to \"All\"</string>
 </resources>

@@ -29,8 +29,8 @@
 	<string name="delete_all_feeds">Effacer TOUS les flux</string>
 	<string name="activate_JS_warning">Cela peut ralentir le chargement des pages web</string>
 	<string name="activate_JS_">Activer JavaScript</string>
-	<string name="empty_list_toast_1">Votre liste de flux est vide.</string>
-	<string name="empty_list_toast_2">" ont été ajouté par défaut."</string>
+	<string name="empty_list_toast_1">Votre liste de flux est vide</string>
+	<string name="empty_list_toast_2">\" ont été ajouté par défaut\"</string>
 	<string name="NoNews_part3">Verifier votre connection internet et selectionner le filtre \"Tous\"</string>
 	<string name="OK">OK</string>
 </resources>

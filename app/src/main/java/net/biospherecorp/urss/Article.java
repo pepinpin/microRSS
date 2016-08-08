@@ -21,7 +21,7 @@ class Article implements Comparable<Article> {
 	private Context _ctxt;
 
 	private String _title, _url, _description, _siteName, _date, _time;
-	private Date _dateInMilli;
+	private Date _dateRFC;
 
 	// private constructor,
 	// accessible by the static builder class
@@ -47,14 +47,9 @@ class Article implements Comparable<Article> {
 		// if the date is NOT equal to the filter
 		// (meaning that the article created is empty)
 		if(!dateRaw.equals(ListFragment._filter)){
-			// gets the date in milliseconds from the article's date
 
-			try {
-				_dateInMilli = _parseDateInMilli(dateRaw);
-			}catch (ParseException e){
-				e.printStackTrace();
-			}
-
+			// gets the date in the RFC format from the article's date
+			_dateRFC = _parseDateInMilli(dateRaw);
 
 			Calendar c= Calendar.getInstance();
 
@@ -68,7 +63,7 @@ class Article implements Comparable<Article> {
 			String yesterday = sdf.format(c.getTime());
 
 			// set Calendar with the Article's _date
-			c.setTime(_dateInMilli);
+			c.setTime(_dateRFC);
 
 			// format the article's _date like dd/MM/yyyy
 			String articleDate = _stringifyDate(c, false);
@@ -99,11 +94,50 @@ class Article implements Comparable<Article> {
 	// and return its value in milliseconds
 	//
 	// Solely used by the method _parseDate()
-	private Date _parseDateInMilli(String dateRaw) throws ParseException{
+	private Date _parseDateInMilli(String dateRaw){
 
-		String format = "EEE, dd MMM yyyy kk:mm:ss Z";
-		SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
-		return sdf.parse(dateRaw);
+		L.m(">> date : " + dateRaw);
+
+		// different format of date to get the best chances of parsing it
+		String format_1 = "EEE, dd MMM yyyy kk:mm:ss Z";
+		String format_2 = "EEE, dd MMM yyyy kk:mm:ss z";
+		String format_3 = "EEE, dd MMM yyyy kk:mm:ss";
+
+		Date tmpDate = null;
+
+		// let's try to parse the date with the 1st format
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat(format_1, Locale.US);
+			tmpDate = sdf.parse(dateRaw);
+		}catch (ParseException e){
+			e.printStackTrace();
+		}
+		// if it doesn't work, let's parse it with the 2nd format
+		if (tmpDate == null){
+			try {
+				SimpleDateFormat sdf = new SimpleDateFormat(format_2, Locale.US);
+				tmpDate = sdf.parse(dateRaw);
+			}catch (ParseException e){
+				e.printStackTrace();
+			}
+		}
+		// if it doesn't work either, let's parse it with the 3rd format
+		if (tmpDate == null){
+			try {
+				SimpleDateFormat sdf = new SimpleDateFormat(format_3, Locale.US);
+				tmpDate = sdf.parse(dateRaw);
+			}catch (ParseException e){
+				e.printStackTrace();
+			}
+		}
+		// if nothing works, just return the date of the day
+		if (tmpDate == null){
+			tmpDate = new Date();
+		}
+
+		L.m(">>>> date parsed: " +  tmpDate.toString());
+
+		return tmpDate;
 	}
 
 
@@ -157,10 +191,10 @@ class Article implements Comparable<Article> {
 	@Override
 	public int compareTo(@NonNull Article art) {
 
-		if (_dateInMilli.getTime() < art._dateInMilli.getTime()) {
+		if (_dateRFC.getTime() < art._dateRFC.getTime()) {
 			return 1;
 		}
-		else if (_dateInMilli.getTime() >  art._dateInMilli.getTime()) {
+		else if (_dateRFC.getTime() > art._dateRFC.getTime()) {
 			return -1;
 		}
 		else {

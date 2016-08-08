@@ -44,6 +44,7 @@
 	<EditText
 		android:id="@+id/urlEditText"
 		android:inputType="textUri"
+		android:hint="http://..."
 
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -60,6 +61,7 @@
 
 	<EditText
 		android:id="@+id/nameEditText"
+		android:inputType="text"
 
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

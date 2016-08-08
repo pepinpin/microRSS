@@ -45,11 +45,15 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder>{
 		Collections.sort(_list);
 		notifyDataSetChanged();
 
-		autoLoadArticle(getLatestArticle());
+		if (_list.size() > 0){
+			autoLoadArticle(getLatestArticle());
+		}
 	}
 
 	// called only if there is no articles retrieved
 	// from the net (no connection or no news with selected filter)
+	//
+	// called by the ListAdapter updateRecyclerView() method
 	void addArticle(Article article){
 		_list.add(article);
 		notifyDataSetChanged();
@@ -103,7 +107,7 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder>{
 		private TextView _site, _date, _title, _description;
 		private Article _article;
 
-		MyViewHolder(View itemView) {
+		MyViewHolder(final View itemView) {
 			super(itemView);
 
 			_site = (TextView) itemView.findViewById(R.id.siteTV);

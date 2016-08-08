@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.Artic
 		}
 
 		// checks if a fragment has already been created
-		// if it hasn't been created yet, create it
+		// if it hasn't, create it
 		if (savedInstanceState == null) {
 
 			ListFragment fragment = new ListFragment();
