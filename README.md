@@ -25,6 +25,7 @@ Available for free on Google Play market :
 
 ### Know issues :
 - Feeds must respect the RFC-822 date-time format for the pubDate (ex : Fri, 08 Jul 2016 15:00:15 +0200)
+or the date of the current day will be used
 
 ### Todo :
 - Use of Navigation Drawer
